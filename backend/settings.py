@@ -53,7 +53,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True  # Allows frontend requests
+CORS_ALLOWED_ORIGINS = [
+    "https://friendly-banoffee-f30441.netlify.app",  # Replace with your frontend URL
+]
 
 ROOT_URLCONF = 'backend.urls'
 
