@@ -3,6 +3,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Task
 from .serializers import TaskSerializer
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
+
 
 @api_view(["GET", "POST"])
 def task_list(request):
@@ -35,3 +38,9 @@ def task_detail(request, pk):
     if request.method == "DELETE":
         task.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class SecureHelloView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        return Response({"message": f"Hello, {request.user.username}!"})

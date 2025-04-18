@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-i*rf)dp9mw2w%6=$&et77o@1e!ii1b9jml4!bji0s%d&l!y#7o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['appdev-todo-backend.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','appdev-todo-backend.onrender.com']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "todo",
     "corsheaders",
+    "rest_framework.authtoken",
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,16 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "https://friendly-banoffee-f30441.netlify.app",  # Replace with your frontend URL
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
+
 
 ROOT_URLCONF = 'backend.urls'
 
